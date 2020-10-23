@@ -28,6 +28,7 @@ class AdmobAd{
         } else if (event == MobileAdEvent.failedToLoad) {
           isShown = false;
           _isGoingToBeShown = false;
+          // todo: update the new ad here
         }
       },
     );
@@ -63,4 +64,9 @@ class AdmobAd{
       isShown = false;
     }
   }
+  static void hideBannerAd(){ if (_bannerAd != null && !_isGoingToBeShown) 
+  { _bannerAd.dispose().then((disposed) { isShown = !disposed; }); 
+   _bannerAd = null; isShown = false; } 
+                           }
+}
   
